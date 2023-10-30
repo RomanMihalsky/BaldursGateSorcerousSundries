@@ -23,3 +23,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/magic_store?
     username: postgres
     password: postgres
+liquibase:
+  change-log: classpath:liquibase/master-changelog.yml

@@ -4,30 +4,26 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Set;
+import org.hibernate.annotations.UuidGenerator;
 
 @Data
 @Entity
-@Table(name = "author")
+@Table(name = "staff")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Author {
+public class Staff {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
-    @SequenceGenerator(name = "author_seq", sequenceName = "author_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "staff_seq")
+    @SequenceGenerator(name = "staff_seq", sequenceName = "staff_seq", allocationSize = 1)
     @Column(name = "id", columnDefinition = "serial")
     private Long id;
 
-    @Column(name="uid")
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
+    @GeneratedValue
+    @Column(name = "uid")
     private String uid;
 
     @Embedded
     private FullName fullName;
-
-    private Set<MagicBook> magicBooks;
-
-    private Set<MagicScroll> magicScrolls;
-
 }

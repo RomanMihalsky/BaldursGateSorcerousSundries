@@ -5,29 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
 @Data
 @Entity
-@Table(name = "author")
+@Table(name = "customer")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Author {
+public class Customer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
-    @SequenceGenerator(name = "author_seq", sequenceName = "author_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
+    @SequenceGenerator(name = "customer_seq", sequenceName = "customer_seq", allocationSize = 1)
     @Column(name = "id", columnDefinition = "serial")
     private Long id;
 
-    @Column(name="uid")
+    @Column(name = "uid", columnDefinition = "serial")
     private String uid;
 
     @Embedded
     private FullName fullName;
-
-    private Set<MagicBook> magicBooks;
-
-    private Set<MagicScroll> magicScrolls;
-
 }
