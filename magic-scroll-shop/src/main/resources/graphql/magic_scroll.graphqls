@@ -1,0 +1,51 @@
+type MagicScroll {
+    id: ID!
+    serialNumber: String!
+    spellName: String!
+    typeSpell: String!
+    description: String
+    price: Int
+    deleted: String
+    authors: [Author]!
+}
+
+type MagicBook {
+    id: ID!
+    serialNumber: String!
+    spellName: String!
+    typeSpell: String!
+    description: String
+    price: Int
+    numberOfPages: Int
+    deleted: String
+    authors: [Author]!
+}
+
+type Author {
+    id: ID!
+    uid: String!
+    deleted: String
+    fullName: FullName
+    magicBooks: [MagicBook]
+    magicScrolls: [MagicScroll]
+}
+
+type Customer {
+    id: ID!
+    uid: String!
+    deleted: String
+    fullName: FullName
+}
+
+type Staff {
+    id: ID!
+    uid: String!
+    deleted: String
+    fullName: FullName
+}
+
+type FullName {
+    firstName: String
+    middleName: String
+    lastName: String
+}

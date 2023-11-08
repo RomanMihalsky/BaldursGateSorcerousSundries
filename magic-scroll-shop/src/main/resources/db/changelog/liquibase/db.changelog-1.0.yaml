@@ -1,0 +1,286 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_magic_scroll_seq_2023_10_30_22_58
+      author: RMi4alsky
+      changes:
+        - createSequence:
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            schemaName: public
+            sequenceName: magic_scroll_seq
+            startValue: 1
+  - changeSet:
+      id: create_magic_scroll_table_2023_10_30_22_58
+      author: RMi4alsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  defaultValueComputed: nextval('magic_scroll_seq')
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: serial_number
+                  type: VARCHAR(64)
+              - column:
+                  name: spell_name
+                  type: VARCHAR(128)
+              - column:
+                  name: type_spell
+                  type: VARCHAR(128)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: price
+                  type: INT
+              - column:
+                  name: deleted
+                  type: TIMESTAMP
+            tableName: magic_scroll
+  - changeSet:
+      id: create_magic_book_seq_2023_10_30_22_58
+      author: RMi4alsky
+      changes:
+        - createSequence:
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            schemaName: public
+            sequenceName: magic_book_seq
+            startValue: 1
+  - changeSet:
+      id: create_magic_book_table_2023_10_30_22_58
+      author: RMi4alsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  defaultValueComputed: nextval('magic_book_seq')
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: serial_number
+                  type: VARCHAR(64)
+              - column:
+                  name: spell_name
+                  type: VARCHAR(128)
+              - column:
+                  name: type_spell
+                  type: VARCHAR(128)
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: number_of_pages
+                  type: INT
+              - column:
+                  name: price
+                  type: INT
+              - column:
+                  name: deleted
+                  type: TIMESTAMP
+            tableName: magic_book
+  - changeSet:
+      id: create_author_seq_2023_10_31_08_59
+      author: RMi4alsky
+      changes:
+        - createSequence:
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            schemaName: public
+            sequenceName: author_seq
+            startValue: 1
+  - changeSet:
+      id: create_author_table_2023_10_31_08_59
+      author: RMi4alsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  defaultValueComputed: nextval('author_seq')
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: uid
+                  type: VARCHAR(64)
+              - column:
+                  name: first_name
+                  type: VARCHAR(64)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(64)
+              - column:
+                  name: last_name
+                  type: VARCHAR(64)
+              - column:
+                  name: deleted
+                  type: TIMESTAMP
+            tableName: author
+  - changeSet:
+      id: create_staff_seq_2023_10_31_09_07
+      author: RMi4alsky
+      changes:
+        - createSequence:
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            schemaName: public
+            sequenceName: staff_seq
+            startValue: 1
+  - changeSet:
+      id: create_staff_table_2023_10_31_09_07
+      author: RMi4alsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  defaultValueComputed: nextval('staff_seq')
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: uid
+                  type: VARCHAR(64)
+              - column:
+                  name: first_name
+                  type: VARCHAR(64)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(64)
+              - column:
+                  name: last_name
+                  type: VARCHAR(64)
+              - column:
+                  name: deleted
+                  type: TIMESTAMP
+            tableName: staff
+  - changeSet:
+      id: create_customer_seq_2023_10_31_09_07
+      author: RMi4alsky
+      changes:
+        - createSequence:
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            schemaName: public
+            sequenceName: customer_seq
+            startValue: 1
+  - changeSet:
+      id: create_customer_table_2023_10_31_09_07
+      author: RMi4alsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  defaultValueComputed: nextval('customer_seq')
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: uid
+                  type: VARCHAR(64)
+              - column:
+                  name: first_name
+                  type: VARCHAR(64)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(64)
+              - column:
+                  name: last_name
+                  type: VARCHAR(64)
+              - column:
+                  name: deleted
+                  type: TIMESTAMP
+            tableName: customer
+  - changeSet:
+      id: create_magic_book_author_table_2023_11_01_09_25
+      author: RMihalsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: magic_book_id
+                  type: BIGINT
+              - column:
+                  name: author_id
+                  type: BIGINT
+            tableName: magic_book_author
+  - changeSet:
+      id: fk_magic_book_magic_book_author_2023_11_01_09_27
+      author: RMihalsky
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: magic_book_id
+            baseTableName: magic_book_author
+            constraintName: fk_magic_book_magic_book_author
+            referencedColumnNames: id
+            referencedTableName: magic_book
+  - changeSet:
+      id: fk_author_magic_book_author_2023_11_01_09_29
+      author: RMihalsky
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: magic_book_author
+            constraintName: fk_author_magic_book_author
+            referencedColumnNames: id
+            referencedTableName: author
+  - changeSet:
+      id: create_magic_scroll_author_table_2023_11_01_09_39
+      author: RMihalsky
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: magic_scroll_id
+                  type: BIGINT
+              - column:
+                  name: author_id
+                  type: BIGINT
+            tableName: magic_scroll_author
+  - changeSet:
+      id: fk_magic_scroll_magic_scroll_author_2023_11_01_09_40
+      author: RMihalsky
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: magic_scroll_id
+            baseTableName: magic_scroll_author
+            constraintName: fk_magic_scroll_magic_scroll_author
+            referencedColumnNames: id
+            referencedTableName: magic_scroll
+  - changeSet:
+      id: fk_author_magic_scroll_author_2023_11_01_09_41
+      author: RMihalsky
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: author_id
+            baseTableName: magic_scroll_author
+            constraintName: fk_author_magic_scroll_author
+            referencedColumnNames: id
+            referencedTableName: author

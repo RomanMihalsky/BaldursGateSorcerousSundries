@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -23,11 +24,16 @@ public class Author {
     @Column(name="uid")
     private String uid;
 
+    @Column(name = "deleted")
+    private LocalDateTime deleted;
+
     @Embedded
     private FullName fullName;
 
+    @ManyToMany(mappedBy = "authors",fetch = FetchType.LAZY)
     private Set<MagicBook> magicBooks;
 
+    @ManyToMany(mappedBy = "authors",fetch = FetchType.LAZY)
     private Set<MagicScroll> magicScrolls;
 
 }

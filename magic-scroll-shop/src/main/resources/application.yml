@@ -20,8 +20,11 @@ spring:
     hikari:
       transaction-isolation: TRANSACTION_READ_COMMITTED
       maximum-pool-size: 10
-    url: jdbc:postgresql://localhost:5432/magic_store?
+    url: jdbc:postgresql://localhost:5432/magic_store
     username: postgres
     password: postgres
+  graphql:
+    schema:
+      locations: classpath:graphql/
 liquibase:
-  change-log: classpath:liquibase/master-changelog.yml
+  change-log: classpath:liquibase/db.changelog-master.yaml

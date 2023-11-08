@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "staff")
@@ -23,6 +25,9 @@ public class Staff {
     @GeneratedValue
     @Column(name = "uid")
     private String uid;
+
+    @Column(name = "deleted")
+    private LocalDateTime deleted;
 
     @Embedded
     private FullName fullName;
